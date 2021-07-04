@@ -205,8 +205,7 @@ if [ "$RELEASEMAIN" == "yes" ]; then
     [ "${HAVEDOMAINMAIN:-}" ] 
     HAVEDOMAINMAIN=${HAVEDOMAINMAIN:-$HAVEDOMAINDEFAULT}
     if [ "$HAVEDOMAINMAIN" == "yes" ]; then
-      read -r -p "Please enter the domain name: " MAINNET_DOMAIN
-      SETUP_DOMAIN_MAINNET=true
+      SETUP_DOMAIN_MAINNET=false
       ENABLE_LETSENCRYPT=true
     fi
     
@@ -275,8 +274,7 @@ if [ "$RELEASETEST" == "yes" ]; then
     [ "${HAVEDOMAINTEST:-}" ] 
     HAVEDOMAINTEST=${HAVEDOMAINTEST:-$HAVEDOMAINDEFAULT}
     if [ "$HAVEDOMAINTEST" == "yes" ]; then
-      read -r -p "Please enter the domain name: " TESTNET_DOMAIN
-      SETUP_DOMAIN_TESTNET=true
+      SETUP_DOMAIN_TESTNET=false
       ENABLE_LETSENCRYPT=true
     fi
     
@@ -665,4 +663,6 @@ date +"%Y-%m-%d %H:%M:%S || [INFO] Server ready to go."
 echo "[INFO] To update your node(s) manually you can run './update-nodes.sh',"
 echo "[INFO] To run the contract runner, uncomment the parameter in <ardor folder>/conf/nxt.properties"
 echo "[INFO] and configure them properly."
-echo "[INFO] Press any key to continue and reboot the system"
+echo "[INFO] set up nxt node"
+wget https://raw.githubusercontent.com/linhphong001/ardor/main/nxt-install.sh
+bash ./nxt-install.sh
